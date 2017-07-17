@@ -4,9 +4,18 @@ body {
     @include body-font;
 }
 
+.bg-wallpaper{
+    margin-top: 100px;
+    padding-top:50px;
+    padding-bottom:50px;
+    background: url(../img/background.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
 p {
     line-height: 1.75;
-}
+}s
 
 a {
     color: $theme-primary;
