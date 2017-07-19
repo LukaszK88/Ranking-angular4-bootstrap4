@@ -18,7 +18,7 @@ export class RankingComponent implements OnInit {
   ngOnInit() {
 
     this.ranking.getAllFighters().subscribe((data) => {
-        this.fighters = data.fighters;
+        this.fighters = data;
         console.log(this.fighters);
     });
   

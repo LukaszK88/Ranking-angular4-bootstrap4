@@ -7,8 +7,8 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://www.whitecompanymedieval.com/api/';
-
+ // url: string = 'http://www.whitecompanymedieval.com/api/';
+url: string = 'http://whitecompany.com/api/';
   constructor(public http: Http) {
   }
 

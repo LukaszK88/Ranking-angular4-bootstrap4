@@ -6,24 +6,26 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { Api } from './services/api';
 
-
-import { AppComponent } from './app.component';
-import { UserComponent } from './components/user/user.component';
-
+import { UserService } from './services/user.service';
 import { FighterService } from './services/fighter.service';
 import { RankingService } from './services/ranking.service';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/home/nav/nav.component';
 
+import { AppComponent } from './app.component';
 import { RankingComponent } from './components/ranking/ranking.component';
-
+import { SignupComponent } from './components/auth/signup/signup.component';
 // Import the Animations module
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Import the KendoModules
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { DialogModule } from '@progress/kendo-angular-dialog';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { TotalComponent } from './components/ranking/total/total.component';
+import { BohurtComponent } from './components/ranking/bohurt/bohurt.component';
+import { AbsPipe } from './pipes/abs.pipe';
+import { LimitToPipe } from './pipes/limit-to.pipe';
 
 const appRoutes: Routes = [
   { path:'', component:HomeComponent},
@@ -35,11 +37,14 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
     HomeComponent,
     NavComponent,
     RankingComponent,
-    TotalComponent
+    TotalComponent,
+    BohurtComponent,
+    SignupComponent,
+    AbsPipe,
+    LimitToPipe
   ],
   imports: [
     BrowserModule,
@@ -48,12 +53,14 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule,
     ButtonsModule,
-    LayoutModule
+    LayoutModule,
+    DialogModule
   ],
   providers: [
     Api,
     FighterService,
-    RankingService
+    RankingService,
+    UserService
    
   ],
   bootstrap: [AppComponent]

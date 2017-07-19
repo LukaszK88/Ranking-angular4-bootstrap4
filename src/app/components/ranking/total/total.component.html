@@ -1,18 +1,18 @@
 <table class="table table-bordered table-inverse">
   <thead>
     <tr>
-      <th>#</th>
+      <th>Nr</th>
       <th>Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+      <th>Total Points</th>
+      <th>Last update</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let fighter of fighters">
-      <th scope="row">1</th>
+    <tr *ngFor="let fighter of fighters; let i = index">
+      <th width="3%" scope="row">{{ i + 1 }}</th>
       <td>{{ fighter.name }}</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{ fighter.total_points }}</td>
+      <td width="7%">{{ fighter.updated_at | date:"MM/dd/yy" }}</td>
     </tr>
   </tbody>
 </table>

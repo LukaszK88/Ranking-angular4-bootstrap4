@@ -1,0 +1,31 @@
+<table class="table table-bordered table-inverse">
+  <thead>
+    <tr>
+      <th>Nr</th>
+      <th>Name</th>
+      <th>Fights</th>
+      <th>Won</th>
+      <th>Last Man</th>
+      <th>Down</th>
+      <th>Suicides</th>
+      <th>Ratio</th>
+      <th>Points</th>
+      <th>Last Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fighter of fighters; let i = index">
+      <th width="3%" scope="row">{{ i + 1 }}</th>
+      <td>{{ fighter.name }}</td>
+      <td>{{ fighter.bohurtTable.fights }}</td>
+      <td>{{ fighter.bohurtTable.won }}</td>
+      <td>{{ fighter.bohurtTable.lastMan }}</td>
+      <td>{{ fighter.bohurtTable.down }}</td>
+      <td>{{ fighter.bohurtTable.suicide }}</td>
+      <td>{{ ((((fighter.bohurtTable.suicide + fighter.bohurtTable.down) / fighter.bohurtTable.fights)*100)-100) | abs | limitTo: 2 }}%</td>
+      <td>{{ fighter.bohurtTable.points }}</td>
+
+      <td width="7%">{{ fighter.updated_at | date:"MM/dd/yy" }}</td>
+    </tr>
+  </tbody>
+</table>
