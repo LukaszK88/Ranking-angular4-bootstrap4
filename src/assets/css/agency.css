@@ -73,6 +73,11 @@ img::-moz-selection {
 body {
   -webkit-tap-highlight-color: #000000; }
 
+.validation-alert {
+  color: red;
+  margin-top: -19px;
+  font-size: 14px; }
+
 #mainNav {
   background-color: #222222; }
   #mainNav .navbar-toggler {

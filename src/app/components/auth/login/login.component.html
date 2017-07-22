@@ -1,0 +1,22 @@
+<form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+  <h2 md-dialog-title>Login</h2>
+  <md-dialog-content>
+    <md-input-container>
+      <input mdInput type="email" placeholder="Username" formControlName="username" email>
+    </md-input-container>
+        <div class="validation-alert" *ngIf="!loginForm.controls['username'].valid && loginForm.controls['username'].touched">Required && must be valid email </div>
+  <br>
+    <md-input-container>
+      <input mdInput type='password' placeholder="Password" formControlName="password">
+    </md-input-container>
+          <div class="validation-alert" *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched">Required</div>
+  </md-dialog-content>
+  <md-dialog-actions>
+      <!-- <button md-button (click)='signUp()'>No</button>   -->
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button md-button type="submit" [disabled]="!loginForm.valid">Log in</button>
+  </md-dialog-actions>
+    </form>
+<hr>
+    <button md-button (click)="fbLogin('facebook')">Facebook</button>
+   <button md-button (click)="gLogin('google')">Google</button> 

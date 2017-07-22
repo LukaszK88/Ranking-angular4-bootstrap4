@@ -1,6 +1,20 @@
 
-<kendo-dialog *ngIf="opened" title="Action required" (click)="close()">
-  <div>
-  jjghj
-  </div>
-</kendo-dialog>
+<form [formGroup]="signUpForm" (ngSubmit)="signUp(signUpForm.value)">
+  <h2 md-dialog-title>Register</h2>
+  <md-dialog-content>
+    <md-input-container>
+      <input mdInput type="email" placeholder="Email" formControlName="email" email>
+    </md-input-container>
+        <div class="validation-alert" *ngIf="!signUpForm.controls['email'].valid && signUpForm.controls['email'].touched">Required && must be valid email </div>
+  <br>
+    <md-input-container>
+      <input mdInput type='password' placeholder="Password" formControlName="password">
+    </md-input-container>
+          <div class="validation-alert" *ngIf="!signUpForm.controls['password'].valid && signUpForm.controls['password'].touched">Required</div>
+  </md-dialog-content>
+  <md-dialog-actions>
+      <!-- <button md-button (click)='signUp()'>No</button>   -->
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button md-button type="submit" [disabled]="!signUpForm.valid">Sign up</button>
+  </md-dialog-actions>
+</form>

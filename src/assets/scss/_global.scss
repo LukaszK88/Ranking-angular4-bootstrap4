@@ -82,3 +82,10 @@ img::-moz-selection {
 body {
     -webkit-tap-highlight-color: $theme-primary;
 }
+
+.validation-alert{
+    color: red;
+    margin-top: -19px;
+    font-size: 14px;
+
+}

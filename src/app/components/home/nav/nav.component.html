@@ -14,18 +14,20 @@
                         <a class="nav-link" href="#portfolio">Portfolio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" *ngIf="currentUser">{{ currentUser.username }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#team">Team</a>
+                        <a class="nav-link" *ngIf="currentUser" (click)="logout()">Log out</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" (click)="openSignup=!openSignup">Sign up</a>
+                        <a class="nav-link" *ngIf="!currentUser" (click)="openLogin(key)">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" *ngIf="!currentUser" (click)="openSignup(key)">Sign up</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div *ngIf="openSignup">
-        <app-signup></app-signup>
-    </div>
+    
+ 
