@@ -32,7 +32,16 @@ import { Angular2SocialLoginModule } from "angular2-social-login";
 import {MdDialogModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
 import {MdInputModule} from '@angular/material';
+import {MdTabsModule} from '@angular/material';
 import { LoginComponent } from './components/auth/login/login.component';
+import { LeaderboardComponent } from './components/ranking/leaderboard/leaderboard.component';
+import { MapToIterablePipe } from './pipes/map-to-iterable.pipe';
+import { ProfightComponent } from './components/ranking/profight/profight.component';
+import { SwordShieldComponent } from './components/ranking/sword-shield/sword-shield.component';
+import { SwordBucklerComponent } from './components/ranking/sword-buckler/sword-buckler.component';
+import { LongswordComponent } from './components/ranking/longsword/longsword.component';
+import { PolearmsComponent } from './components/ranking/polearms/polearms.component';
+import { TriathlonComponent } from './components/ranking/triathlon/triathlon.component';
 
 const appRoutes: Routes = [
   { path:'', component:HomeComponent},
@@ -60,7 +69,15 @@ let providers = {
     SignupComponent,
     AbsPipe,
     LimitToPipe,
-    LoginComponent
+    LoginComponent,
+    LeaderboardComponent,
+    MapToIterablePipe,
+    ProfightComponent,
+    SwordShieldComponent,
+    SwordBucklerComponent,
+    LongswordComponent,
+    PolearmsComponent,
+    TriathlonComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +90,7 @@ let providers = {
     MdDialogModule,
     MdButtonModule,
     MdInputModule,
+    MdTabsModule,
     ToastrModule.forRoot(),
     Angular2SocialLoginModule
   ],

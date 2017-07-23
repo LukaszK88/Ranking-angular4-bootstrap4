@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { tokenNotExpired } from 'angular2-jwt';
 
+
 @Injectable()
 export class GuardService {
 
@@ -11,8 +12,14 @@ export class GuardService {
 
   getCurrentUser(){
     if(localStorage.getItem('currentUser')){
+      if(this.loggedIn()){
         return this.user.currentUser();
+      }
     }
+  }
+  
+  loggedIn(){
+    return tokenNotExpired('currentUser');
   }
 
 }

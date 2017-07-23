@@ -1,0 +1,32 @@
+<table class="table table-bordered table-inverse">
+  <thead>
+    <tr>
+      <th>Nr</th>
+      <th>Name</th>
+      <th>Fights</th>
+      <th>Won</th>
+      <th>Lost</th>
+      <th>KO</th>
+      <th>FC 1</th>
+      <th>FC 2</th>
+      <th>FC 3</th>
+      <th>Points</th>
+      <th>Last update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fighter of fighters; let i = index">
+      <th width="3%" scope="row">{{ i + 1 }}</th>
+      <td>{{ fighter.name }}</td>
+      <td width="6%">{{ fighter.profightTable.fights }}</td>
+      <td width="6%">{{ fighter.profightTable.win }}</td>
+      <td width="6%">{{ fighter.profightTable.loss }}</td>
+      <td width="6%">{{ fighter.profightTable.ko }}</td>
+      <td width="6%">{{ fighter.profightTable.fc1 }}</td>
+      <td width="6%">{{ fighter.profightTable.fc2 }}</td>
+      <td width="6%">{{ fighter.profightTable.fc3 }}</td>
+      <td width="6%">{{ fighter.profightTable.points }}</td>
+      <td width="7%">{{ fighter.updated_at | date:"MM/dd/yy" }}</td>
+    </tr>
+  </tbody>
+</table>

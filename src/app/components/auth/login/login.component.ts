@@ -35,9 +35,8 @@ export class LoginComponent implements OnInit {
     this.toast.success('redirecting...',data.message);
     this.dialog.closeAll();
     if(data.token){
-      localStorage.setItem('currentUser',data.token);
     setTimeout(() => {
-      
+      localStorage.setItem('currentUser',data.token);
       location.reload();
     },1500)
     }

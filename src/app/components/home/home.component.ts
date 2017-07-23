@@ -11,21 +11,18 @@ import { JwtHelper } from 'angular2-jwt';
 })
 export class HomeComponent implements OnInit {
   currentUser:any;
-  test:string;
-  jwtHelper: JwtHelper = new JwtHelper();
+
   constructor(protected guard:GuardService) { 
-     if(this.loggedIn()){
-       this.guard.getCurrentUser().subscribe(
-         (data) => this.currentUser = data
-       )
-     }
+    if(tokenNotExpired('currentUser')){
+     this.guard.getCurrentUser().subscribe(
+       (data) => {this.currentUser = data}
+     );
+    }
   }
 
   ngOnInit() {
   }
 
-  loggedIn(){
-    return tokenNotExpired('currentUser');
-  }
+  
 
 }

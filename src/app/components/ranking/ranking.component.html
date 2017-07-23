@@ -1,22 +1,15 @@
-<app-nav></app-nav>
+<app-nav [currentUser]='currentUser'></app-nav>
      
 <div class="container-fluid bg-wallpaper">
-   <kendo-tabstrip>
-        <kendo-tabstrip-tab [title]="'Total'" [selected]="true">
-          <ng-template kendoTabContent>
-       <app-total [fighters]='fighters'></app-total>
-          </ng-template>
-        </kendo-tabstrip-tab>
-        <kendo-tabstrip-tab [title]="'Leaderboard'">
-          <ng-template kendoTabContent>
-
-          </ng-template>
-        </kendo-tabstrip-tab>
-        <kendo-tabstrip-tab [title]="'Bohurt'">
-          <ng-template kendoTabContent>
-            <app-bohurt [fighters]='fighters'></app-bohurt>
-          </ng-template>
-        </kendo-tabstrip-tab>
-        <kendo-tabstrip-tab [title]="'Sydney'" [disabled]="true"></kendo-tabstrip-tab>
-      </kendo-tabstrip>
+  <md-tab-group>
+    <md-tab label="Total"><app-total [fighters]='fighters'></app-total></md-tab>
+    <md-tab label="Leaderboard"><app-leaderboard></app-leaderboard></md-tab>
+    <md-tab label="Bohurt"> <app-bohurt [fighters]='fighters'></app-bohurt></md-tab>
+    <md-tab label="Profight"><app-profight [fighters]='fighters'></app-profight></md-tab>
+    <md-tab label="Sword & Shield"><app-sword-shield [fighters]='fighters'></app-sword-shield></md-tab>
+    <md-tab label="Longsword"><app-longsword [fighters]='fighters'></app-longsword></md-tab>
+    <md-tab label="Sword & Buckler"><app-sword-buckler [fighters]='fighters'></app-sword-buckler></md-tab>
+    <md-tab label="Polearm"><app-polearms [fighters]='fighters'></app-polearms></md-tab>
+    <md-tab label="Triathlon"><app-triathlon [fighters]='fighters'></app-triathlon></md-tab>
+  </md-tab-group>
 </div>
