@@ -1,0 +1,37 @@
+<form [formGroup]="updateRecord" (ngSubmit)="update(updateRecord.value)">
+  <h2 md-dialog-title>Update record</h2>
+  <md-dialog-content>
+  
+  <br>
+  <md-slider
+        formControlName="win"
+        [max]="20"
+        [min]="0"
+        [step]="1"
+        [thumb-label]="true"
+        >
+    </md-slider>
+      Win
+  <br>
+  <br>
+     <md-slider
+        formControlName="loss"
+        [max]="20"
+        [min]="0"
+        [step]="1"
+        [thumb-label]="true"
+        >
+    </md-slider>
+      Loss
+<br>
+<br>
+ <md-select placeholder="Event" formControlName="event_id">
+      <md-option *ngFor="let event of events" [value]="event.id">
+        {{ event.title }} {{ event.date | limitTo:'4' }}
+      </md-option>
+    </md-select>  
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button type="submit" [disabled]="!updateRecord.valid">Update</button>
+  </md-dialog-actions>
+  </form>

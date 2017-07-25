@@ -21,4 +21,10 @@ export class RankingService {
     .map(response => response.json())
     .catch(this.api.serverError)
   }
+
+  saveRankingRecord(type,data){
+    return this.api.post('fighters/'+type,data)
+    .map(response => response.json())
+    .catch(this.api.serverError)
+  }
 }

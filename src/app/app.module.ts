@@ -2,13 +2,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
+//import { RouterModule, Routes } from '@angular/router';
+import { RoutingModule, routingComponents } from './core/routing.module';
+
+
+import { PipeModule } from './core/pipe.module';
+import { UiModule } from './core/ui.module';
+
+import { RankingModule } from './components/ranking/ranking.module';
 
 import { Api } from './services/api';
 
 import { UserService } from './services/user.service';
 import { FighterService } from './services/fighter.service';
 import { RankingService } from './services/ranking.service';
+import { EventService } from './services/event.service';
 import { GuardService } from './services/guard.service';
 import { HomeComponent } from './components/home/home.component';
 import { NavComponent } from './components/home/nav/nav.component';
@@ -33,6 +41,8 @@ import {MdDialogModule} from '@angular/material';
 import {MdButtonModule} from '@angular/material';
 import {MdInputModule} from '@angular/material';
 import {MdTabsModule} from '@angular/material';
+import {MdSelectModule} from '@angular/material';
+import {MdSliderModule} from '@angular/material';
 import { LoginComponent } from './components/auth/login/login.component';
 import { LeaderboardComponent } from './components/ranking/leaderboard/leaderboard.component';
 import { MapToIterablePipe } from './pipes/map-to-iterable.pipe';
@@ -42,11 +52,10 @@ import { SwordBucklerComponent } from './components/ranking/sword-buckler/sword-
 import { LongswordComponent } from './components/ranking/longsword/longsword.component';
 import { PolearmsComponent } from './components/ranking/polearms/polearms.component';
 import { TriathlonComponent } from './components/ranking/triathlon/triathlon.component';
+import { UpdateSwordShieldComponent } from './components/ranking/sword-shield/update-sword-shield/update-sword-shield.component';
+import { UpdateLongswordComponent } from './components/ranking/longsword/update-longsword/update-longsword.component';
 
-const appRoutes: Routes = [
-  { path:'', component:HomeComponent},
-  { path:'ranking', component:RankingComponent},
-]
+
 
 let providers = {
     "google": {
@@ -61,36 +70,22 @@ let providers = {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    NavComponent,
-    RankingComponent,
-    TotalComponent,
-    BohurtComponent,
+    
     SignupComponent,
-    AbsPipe,
-    LimitToPipe,
     LoginComponent,
-    LeaderboardComponent,
-    MapToIterablePipe,
-    ProfightComponent,
-    SwordShieldComponent,
-    SwordBucklerComponent,
-    LongswordComponent,
-    PolearmsComponent,
-    TriathlonComponent
+    routingComponents
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes),
+    RoutingModule,
     BrowserAnimationsModule,
+    PipeModule,
+    UiModule,
+    RankingModule,
     LayoutModule,
-    MdDialogModule,
-    MdButtonModule,
-    MdInputModule,
-    MdTabsModule,
     ToastrModule.forRoot(),
     Angular2SocialLoginModule
   ],
@@ -99,11 +94,12 @@ let providers = {
     FighterService,
     RankingService,
     UserService,
-    GuardService
+    GuardService,
+    EventService
   ],
   entryComponents: [ 
     SignupComponent,
-    LoginComponent 
+    LoginComponent,
   ],
   bootstrap: [AppComponent]
 })
