@@ -1,15 +1,15 @@
-import { Component ,Inject, OnInit } from '@angular/core';
+import { Component,Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MD_DIALOG_DATA } from '@angular/material';
 import { UpdateService } from '../../update.service';
 
 @Component({
-  selector: 'app-update-longsword',
-  templateUrl: './update-longsword.component.html'
+  selector: 'app-update-bohurt',
+  templateUrl: './update-bohurt.component.html'
 })
-export class UpdateLongswordComponent implements OnInit {
+export class UpdateBohurtComponent implements OnInit {
 
-   dialogRef:any;
+  dialogRef:any;
   updateRecord:FormGroup;
   events:any[];
 
@@ -24,8 +24,10 @@ export class UpdateLongswordComponent implements OnInit {
 
     this.updateRecord = fb.group({
     "event_id": ["",Validators.required],
-    "win": [""],
-    "loss": [""]
+    "won": [""],
+    "down": [""],
+    "last": [""],
+    "suicide": [""]
   });
    }
 

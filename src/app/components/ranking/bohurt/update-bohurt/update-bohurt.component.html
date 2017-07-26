@@ -4,8 +4,8 @@
   
   <br>
   <md-slider
-        formControlName="win"
-        [max]="20"
+        formControlName="won"
+        [max]="30"
         [min]="0"
         [step]="1"
         [thumb-label]="true"
@@ -15,7 +15,7 @@
   <br>
   <br>
      <md-slider
-        formControlName="loss"
+        formControlName="down"
         [max]="20"
         [min]="0"
         [step]="1"
@@ -23,6 +23,28 @@
         >
     </md-slider>
       Loss
+      <br>
+  <br>
+     <md-slider
+        formControlName="last"
+        [max]="10"
+        [min]="0"
+        [step]="1"
+        [thumb-label]="true"
+        >
+    </md-slider>
+      Last man
+      <br>
+  <br>
+     <md-slider
+        formControlName="suicide"
+        [max]="10"
+        [min]="0"
+        [step]="1"
+        [thumb-label]="true"
+        >
+    </md-slider>
+      Suicide
 <br>
 <br>
  <md-select placeholder="Event" formControlName="event_id">

@@ -7,8 +7,7 @@ import { tokenNotExpired } from 'angular2-jwt';
 
 @Component({
   selector: 'app-ranking',
-  templateUrl: './ranking.component.html',
-  styleUrls: ['./ranking.component.css']
+  templateUrl: './ranking.component.html'
 })
 export class RankingComponent implements OnInit {
   currentUser:any;

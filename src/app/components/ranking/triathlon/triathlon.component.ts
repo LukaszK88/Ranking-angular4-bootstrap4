@@ -1,4 +1,6 @@
 import { Component,Input, OnInit } from '@angular/core';
+import {UpdateTriathlonComponent} from './update-triathlon/update-triathlon.component';
+import { UpdateService } from '../update.service';
 
 @Component({
   selector: 'app-triathlon',
@@ -7,9 +9,26 @@ import { Component,Input, OnInit } from '@angular/core';
 })
 export class TriathlonComponent implements OnInit {
 @Input() fighters:any[];
-  constructor() { }
+ 
+  openedDialog:boolean;
+  dialogRef:any;
+
+  constructor(
+     protected updateService: UpdateService
+  ) {
+    
+   }
 
   ngOnInit() {
   }
 
+  openUpdate(fighter){
+    this.updateService.openUpdate(
+      this.openedDialog,
+      this.dialogRef,
+      UpdateTriathlonComponent,
+      fighter,
+      'triathlon'
+    )
+ }
 }

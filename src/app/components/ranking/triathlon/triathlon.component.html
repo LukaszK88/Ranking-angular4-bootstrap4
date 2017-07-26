@@ -19,6 +19,7 @@
       <td width="6%">{{ fighter.triathlonTable.loss }}</td>
       <td width="6%">{{ fighter.triathlonTable.points }}</td>
       <td width="7%">{{ fighter.updated_at | date:"MM/dd/yy" }}</td>
+      <td width="3%"><i (click)="openUpdate(fighter)" class="fa fa-plus" aria-hidden="true"></i></td>
     </tr>
   </tbody>
 </table>

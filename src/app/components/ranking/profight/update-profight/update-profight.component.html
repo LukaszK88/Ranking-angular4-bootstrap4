@@ -5,7 +5,7 @@
   <br>
   <md-slider
         formControlName="win"
-        [max]="20"
+        [max]="5"
         [min]="0"
         [step]="1"
         [thumb-label]="true"
@@ -16,15 +16,59 @@
   <br>
      <md-slider
         formControlName="loss"
-        [max]="20"
+        [max]="5"
         [min]="0"
         [step]="1"
         [thumb-label]="true"
         >
     </md-slider>
       Loss
-<br>
-<br>
+  <br>
+  <br>
+     <md-slider
+        formControlName="ko"
+        [max]="5"
+        [min]="0"
+        [step]="1"
+        [thumb-label]="true"
+        >
+    </md-slider>
+      KO
+  <br>
+  <br>
+     <md-slider
+        formControlName="fc_1"
+        [max]="1"
+        [min]="0"
+        [step]="1"
+        [thumb-label]="true"
+        >
+    </md-slider>
+      First class I
+  <br>
+  <br>
+     <md-slider
+        formControlName="fc_2"
+        [max]="1"
+        [min]="0"
+        [step]="1"
+        [thumb-label]="true"
+        >
+    </md-slider>
+      First class II
+  <br>
+  <br>
+     <md-slider
+        formControlName="fc_3"
+        [max]="1"
+        [min]="0"
+        [step]="1"
+        [thumb-label]="true"
+        >
+    </md-slider>
+      First class III
+  <br>
+  <br>
  <md-select placeholder="Event" formControlName="event_id">
       <md-option *ngFor="let event of events" [value]="event.id">
         {{ event.title }} {{ event.date | limitTo:'4' }}
