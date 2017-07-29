@@ -20,7 +20,8 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "../node_modules/ngx-toastr/toastr.css"
+        "../node_modules/ngx-toastr/toastr.css",
+        "../bower_components/flag-icon-css/css/flag-icon.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

@@ -20,8 +20,8 @@ export class LeaderboardComponent implements OnInit {
   }
 
   getLeaderboardData(){
-    this.ranking.getLeaderboard().subscribe(
-      (data) => {this.leaderboard = data; console.log(data)}
+    this.ranking.getLeaderboard().$observable.subscribe(
+      (data) => {this.leaderboard = data}
     )
   }
 }

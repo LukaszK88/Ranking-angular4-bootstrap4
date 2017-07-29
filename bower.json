@@ -1,0 +1,21 @@
+{
+  "name": "ang",
+  "description": "ranking",
+  "main": "ang",
+  "authors": [
+    "LukaszK88 <lukaskowalpl@yahoo.co.uk>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/LukaszK88/Ranking-angular4-bootstrap4",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flag-icon-css": "^2.8.0"
+  }
+}

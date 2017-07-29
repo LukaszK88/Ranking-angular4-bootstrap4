@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MdDialog,MdDialogRef } from '@angular/material';
 import { RankingService } from '../../services/ranking.service';
+import { Api } from '../../services/api';
 import { EventService } from '../../services/event.service';
 
 
@@ -11,6 +12,7 @@ export class UpdateService {
     public dialog: MdDialog,
     protected ranking: RankingService,
     protected event: EventService,
+    protected api: Api
   ) { }
 
   getTournaments(callback: (data) => void){
@@ -36,11 +38,10 @@ export class UpdateService {
   }
 
   update(record,data){
+   
     record.user_id = data.fighter.id;
-    this.ranking.saveRankingRecord(data.category,record).subscribe(
-      (data) => {console.log(data)},
-      (error) => {console.log(error)}
-    )
+    this.api.post('fighters/'+data.category,record).map(response => response.json())
+     .catch(this.api.serverError);
     this.dialog.closeAll();
   }
 }

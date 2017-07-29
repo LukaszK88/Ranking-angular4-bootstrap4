@@ -10,7 +10,7 @@
   <tbody>
     <tr *ngFor="let fighter of fighters; let i = index">
       <th width="3%" scope="row">{{ i + 1 }}</th>
-      <td>{{ fighter.name }}</td>
+      <td><a [routerLink]="['/fighter', fighter.id]" >{{ fighter.name }}</a></td>
       <td>{{ fighter.total_points }}</td>
       <td width="7%">{{ fighter.updated_at | date:"MM/dd/yy" }}</td>
     </tr>

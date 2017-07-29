@@ -25,6 +25,8 @@ import 'hammerjs';
 import { ToastrModule } from 'ngx-toastr';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 
+import {ResourceModule} from 'ngx-resource';
+
 let providers = {
     "google": {
       "clientId": "230761834733-cn34419a1ftkee8lgha90ija7nvckks6.apps.googleusercontent.com"
@@ -53,7 +55,8 @@ let providers = {
     UiModule,
     RankingModule,
     ToastrModule.forRoot(),
-    Angular2SocialLoginModule
+    Angular2SocialLoginModule,
+    ResourceModule.forRoot()
   ],
   providers: [
     Api,

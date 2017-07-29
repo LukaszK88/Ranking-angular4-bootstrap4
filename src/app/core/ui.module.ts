@@ -7,6 +7,10 @@ import {MdInputModule} from '@angular/material';
 import {MdTabsModule} from '@angular/material';
 import {MdSelectModule} from '@angular/material';
 import {MdSliderModule} from '@angular/material';
+import {MdCardModule} from '@angular/material';
+import {MdListModule} from '@angular/material';
+
+
 
 @NgModule({
   imports: [ 
@@ -19,6 +23,8 @@ import {MdSliderModule} from '@angular/material';
     MdTabsModule,
     MdSelectModule,
     MdSliderModule,
+    MdCardModule,
+    MdListModule,
   ],
   providers: [
 
@@ -37,6 +43,8 @@ import {MdSliderModule} from '@angular/material';
     MdTabsModule,
     MdSelectModule,
     MdSliderModule,
+    MdCardModule,
+    MdListModule,
   ],
 })
 export class UiModule {}

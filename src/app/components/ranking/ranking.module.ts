@@ -21,11 +21,15 @@ import { UpdateProfightComponent } from './profight/update-profight/update-profi
 import { UpdateBohurtComponent } from './bohurt/update-bohurt/update-bohurt.component';
 import { UpdateLongswordComponent } from './longsword/update-longsword/update-longsword.component';
 import { PipeModule } from '../../core/pipe.module';
+
 import { EventService } from './../../services/event.service';
+import { AchievementResource } from './../../resources/achievement.resource';
+
 import { TotalComponent } from './total/total.component';
 import { BohurtComponent } from './bohurt/bohurt.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { NavComponent } from './../../components/home/nav/nav.component';
+import { FighterDetailComponent } from './fighter-detail/fighter-detail.component';
 
 
 
@@ -41,7 +45,8 @@ import { NavComponent } from './../../components/home/nav/nav.component';
   ],
   providers: [
     EventService,
-    UpdateService
+    UpdateService,
+    AchievementResource
   ],
   declarations: [
    // RankingComponent,
@@ -61,7 +66,8 @@ import { NavComponent } from './../../components/home/nav/nav.component';
     TotalComponent,
     BohurtComponent,
     LeaderboardComponent,
-    NavComponent
+    NavComponent,
+    FighterDetailComponent
   ],
   entryComponents: [ 
     UpdateSwordShieldComponent,
@@ -90,7 +96,8 @@ import { NavComponent } from './../../components/home/nav/nav.component';
     TotalComponent,
     BohurtComponent,
     LeaderboardComponent,
-    NavComponent
+    NavComponent,
+    FighterDetailComponent
   ],
 })
 export class RankingModule {}

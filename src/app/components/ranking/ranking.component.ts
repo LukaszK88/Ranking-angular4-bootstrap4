@@ -26,7 +26,7 @@ export class RankingComponent implements OnInit {
 
   ngOnInit() {
 
-    this.ranking.getAllFighters().subscribe((data) => {
+    this.ranking.query().$observable.subscribe((data) => {
         this.fighters = data;
     });
   

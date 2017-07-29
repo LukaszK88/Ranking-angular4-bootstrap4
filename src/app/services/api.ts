@@ -42,3 +42,4 @@ url: string = 'http://whitecompany.com/api/';
     return this.http.put(this.url + endpoint, body, options);
   }
 }
+export const apiBase = 'http://whitecompany.com/api/';

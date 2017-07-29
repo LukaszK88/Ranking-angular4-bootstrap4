@@ -1,30 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { Api } from './api'
+import { Api, apiBase } from './api'
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {Resource, ResourceParams, ResourceAction, ResourceMethod} from 'ngx-resource';
+import {RequestMethod} from '@angular/http';
 
 @Injectable()
-export class RankingService {
+@ResourceParams({
+  url: apiBase 
+})
+export class RankingService extends Resource {
 
-  constructor(
-    public api: Api
-  ) { }
+@ResourceAction({
+    isArray: true,
+    path:'fighters'
+  })
+  query: ResourceMethod<any, any>;
 
-  getAllFighters(){
-    return this.api.get('fighters')
-    .map(response => response.json());
-  }
+@ResourceAction({
+    path:'fighters/{!id}'
+})
+get: ResourceMethod<{id: any}, any>;
 
-  getLeaderboard(){
-    return this.api.get('fighters-leaderboard')
-    .map(response => response.json())
-    .catch(this.api.serverError)
-  }
+@ResourceAction({
+    isArray: false,
+    path:'fighters-leaderboard'
+  })
+  getLeaderboard: ResourceMethod<any, any>;
 
-  saveRankingRecord(type,data){
-    return this.api.post('fighters/'+type,data)
-    .map(response => response.json())
-    .catch(this.api.serverError)
-  }
 }

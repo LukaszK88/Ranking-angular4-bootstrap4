@@ -1,0 +1,144 @@
+<app-nav [currentUser]='currentUser'></app-nav>
+     
+<div *ngIf="fighter" class="container-fluid bg-wallpaper">
+  <div class="row">
+    <div class="col-md-3">
+      <md-card>
+        <md-card-header class="text-center" style="display:block">
+          <md-card-title>{{ fighter.name }}</md-card-title>
+        </md-card-header>
+        <img md-card-image src="{{fighter.image}}">
+      </md-card>
+    </div>
+    <div class="col-md-5">
+      <md-card>
+        <md-card-header class="text-center" style="display:block">
+          <md-card-subtitle><span style="padding:10px" class="flag-icon flag-icon-gr"></span></md-card-subtitle>
+          <md-card-title>Fighter Details</md-card-title>
+        </md-card-header>
+        <md-card-content>
+          <div class="row">
+          
+            <div class="col-md-6">
+            <md-card >
+                <md-card-header class="text-center" style="display:block">
+                  <md-card-title>Fighter Info</md-card-title>
+                  <!-- <md-card-subtitle>Dog Breed</md-card-subtitle> -->
+                </md-card-header>
+                <md-card-content>
+                  <md-list class="fighter-detail-list">
+                    <md-list-item>Age: {{ fighter.age }}</md-list-item>
+                    <md-list-item>Weight: {{ fighter.weight }}</md-list-item>
+                    <md-list-item>Points: {{ fighter.total_points }}</md-list-item>
+                    <md-list-item>Quote:
+                    </md-list-item>
+                    <p >"{{ fighter.quote }}"</p>
+                  </md-list>
+                </md-card-content>
+              </md-card>
+            </div>
+            <div class="col-md-6">
+               <md-card >
+                <md-card-header class="text-center" style="display:block">
+                  <md-card-title>Fighter Stats</md-card-title>
+                  <!-- <md-card-subtitle>Dog Breed</md-card-subtitle> -->
+                </md-card-header>
+                <md-card-content>
+                  <md-list class="fighter-detail-list">
+                    <md-list-item>Fights: {{ fighter.total_fights }}</md-list-item>
+                    <md-list-item>Bohurt: {{ fighter.bohurtTable.fights }}</md-list-item>
+                    <md-list-item>S&S: {{ fighter.swordShieldTable.fights }}</md-list-item>
+                    <md-list-item>S&B: {{ fighter.swordBucklerTable.fights }}</md-list-item>
+                   <md-list-item>Longsword: {{ fighter.longswordTable.fights }}</md-list-item>
+                   <md-list-item>Profight: {{ fighter.profightTable.fights }}</md-list-item>
+                   <md-list-item>Polearm: {{ fighter.polearmTable.fights }}</md-list-item>
+                   <md-list-item>Triathon: {{ fighter.triathlonTable.fights }}</md-list-item>
+                  </md-list>
+                </md-card-content>
+              </md-card>
+            </div>
+          
+          </div>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div class="col-md-4">
+      <md-card >
+        <md-card-header class="text-center" style="display:block">
+          <md-card-title>Achievements {{ activeUser }}</md-card-title>
+        </md-card-header>
+        <md-card-actions *ngIf="activeUser">
+          <button *ngIf="!showAddAchievement" md-raised-button (click)="showAddAchievement=!showAddAchievement">Add Achievement</button>
+        </md-card-actions>
+        <md-card-content>
+          <div *ngIf="showAddAchievement">
+            <form [formGroup]="addAchievementForm" (ngSubmit)="addAchievement(addAchievementForm.value)">
+              <md-select placeholder="Event" formControlName="event_id">
+                <md-option *ngFor="let event of events" [value]="event.id">
+                  {{ event.title }} {{ event.date | limitTo:'4' }}
+                </md-option>
+              </md-select>  
+          <br>
+          <br>
+              <md-select placeholder="Place" formControlName="place">
+                <md-option *ngFor="let place of places" [value]="place.name">
+                  {{ place.name }}
+                </md-option>
+              </md-select>  
+           <br>
+           <br>
+           <md-select placeholder="Category" formControlName="category">
+                <md-option *ngFor="let caegory of categories" [value]="caegory.name">
+                  {{ caegory.name }}
+                </md-option>
+              </md-select>  
+            <button md-raised-button type="submit" [disabled]="!addAchievementForm.valid">Add</button>
+            <button md-raised-button (click)="showAddAchievement=!showAddAchievement" >
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+            </form>
+          </div>
+          <md-list>
+            <md-list-item *ngFor="let achievement of achievements | mapToIterable">
+              <p md-line>
+              {{ achievement.event.title }} {{ achievement.event.date | limitTo: 4 }} <i *ngIf="activeUser" (click)="deleteAchievement(achievement)" class="fa fa-times" aria-hidden="true"></i> <i *ngIf="activeUser" (click)="getAchievementToEdit(achievement)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </p>
+              <p md-line>{{ achievement.category }} | 
+              <span [innerHTML]="achievement.cup"></span> | <span style="padding:10px" class="flag-icon flag-icon-{{ achievement.event.location}}"></span>
+             </p>
+            </md-list-item>
+            <br>
+            <br>
+            <div *ngIf="editAchievement">
+            <form [formGroup]="editAchievementForm" (ngSubmit)="updateAchievement(editAchievementForm.value)">
+              <md-select placeholder="Event" formControlName="event_id" [(ngModel)]="achievement.event_id" name="achievement.event_id">
+                <md-option *ngFor="let event of events" [value]="event.id">
+                  {{ event.title }} {{ event.date | limitTo:'4' }}
+                </md-option>
+              </md-select>  
+          <br>
+          <br>
+              <md-select placeholder="Place" formControlName="place" [(ngModel)]="achievement.place" name="achievement.place">
+                <md-option *ngFor="let place of places" [value]="place.name">
+                  {{ place.name }}
+                </md-option>
+              </md-select>  
+           <br>
+           <br>
+           <md-select placeholder="Category" formControlName="category" [(ngModel)]="achievement.category" name="achievement.category">
+                <md-option *ngFor="let caegory of categories" [value]="caegory.name">
+                  {{ caegory.name }}
+                </md-option>
+              </md-select>  
+            <button md-raised-button type="submit" [disabled]="!editAchievementForm.valid">Update</button>
+            <button md-raised-button (click)="editAchievement=!editAchievement" >
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+            </form>
+          </div>
+          </md-list>
+        </md-card-content>
+      </md-card>
+    </div>
+  </div>
+</div>
