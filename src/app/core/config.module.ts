@@ -15,3 +15,5 @@ export const categories = [
     {name:'Polearm'},
     {name:'Triathlon'}
 ];   
+
+export const apiBase = 'http://whitecompany.com/api/';

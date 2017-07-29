@@ -1,19 +1,21 @@
 <app-nav [currentUser]='currentUser'></app-nav>
      
-<div *ngIf="fighter" class="container-fluid bg-wallpaper">
+<div *ngIf="fighter && achievementCountries" class="container-fluid bg-wallpaper">
   <div class="row">
     <div class="col-md-3">
       <md-card>
         <md-card-header class="text-center" style="display:block">
           <md-card-title>{{ fighter.name }}</md-card-title>
         </md-card-header>
-        <img md-card-image src="{{fighter.image}}">
+          <image-upload *ngIf="!fighter.image && activeUser" [url]="photoUploadUrl" (onFileUploadFinish)="onUploadFinished($event)"></image-upload>
+          <i *ngIf="activeUser && fighter.image" (click)="deletePhoto()" class="fa fa-times" aria-hidden="true"></i> 
+         <img *ngIf="fighter.image" md-card-image src="{{fighter.image}}"> 
       </md-card>
     </div>
     <div class="col-md-5">
       <md-card>
         <md-card-header class="text-center" style="display:block">
-          <md-card-subtitle><span style="padding:10px" class="flag-icon flag-icon-gr"></span></md-card-subtitle>
+          <md-card-subtitle><span *ngFor="let country of achievementCountries.countries" style="padding:10px" class="flag-icon flag-icon-{{ country.event.location }}"></span></md-card-subtitle>
           <md-card-title>Fighter Details</md-card-title>
         </md-card-header>
         <md-card-content>
@@ -65,7 +67,24 @@
     <div class="col-md-4">
       <md-card >
         <md-card-header class="text-center" style="display:block">
-          <md-card-title>Achievements {{ activeUser }}</md-card-title>
+          <div class="row">
+          <div class="col-md-1">
+            <font color='#ffd700'><i class='fa fa-trophy fa-2x pull-left' aria-hidden='true'></i></font><br>
+            <span style="background-color:#ffd700;margin-left:5px" class="badge badge-pill badge-default">{{ achievementCountries.gold }}</span>
+          </div>
+          <div class="col-md-1">
+            <font color='silver'><i class='fa fa-trophy fa-2x pull-left' aria-hidden='true'></i></font><br>
+            <span style="background-color:silver;margin-left:5px" class="badge badge-pill badge-default">{{ achievementCountries.silver }}</span>
+          </div>
+          <div class="col-md-1">
+            <font color='#a52a2a'><i class='fa fa-trophy fa-2x pull-left' aria-hidden='true'></i></font><br>
+            <span style="background-color:#a52a2a;margin-left:5px" class="badge badge-pill badge-default">{{ achievementCountries.bronze }}</span>
+          </div>
+          
+           <div  class="col-md-6">
+            Achievements
+           </div>
+          </div>
         </md-card-header>
         <md-card-actions *ngIf="activeUser">
           <button *ngIf="!showAddAchievement" md-raised-button (click)="showAddAchievement=!showAddAchievement">Add Achievement</button>
@@ -100,11 +119,13 @@
           </div>
           <md-list>
             <md-list-item *ngFor="let achievement of achievements | mapToIterable">
-              <p md-line>
-              {{ achievement.event.title }} {{ achievement.event.date | limitTo: 4 }} <i *ngIf="activeUser" (click)="deleteAchievement(achievement)" class="fa fa-times" aria-hidden="true"></i> <i *ngIf="activeUser" (click)="getAchievementToEdit(achievement)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            </p>
-              <p md-line>{{ achievement.category }} | 
-              <span [innerHTML]="achievement.cup"></span> | <span style="padding:10px" class="flag-icon flag-icon-{{ achievement.event.location}}"></span>
+              <p md-list-avatar><span [innerHTML]="achievement.cup"></span></p>
+              <h3 md-line>
+              {{ achievement.event.title }} {{ achievement.event.date | limitTo: 4 }}<span style="padding:10px" class="flag-icon flag-icon-{{ achievement.event.location}}"></span>
+               <i *ngIf="activeUser" (click)="deleteAchievement(achievement)" class="fa fa-times" aria-hidden="true"></i> <i *ngIf="activeUser" (click)="getAchievementToEdit(achievement)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+            </h3>
+              <p md-line>{{ achievement.category }} 
+               
              </p>
             </md-list-item>
             <br>

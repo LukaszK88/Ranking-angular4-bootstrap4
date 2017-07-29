@@ -31,6 +31,8 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { NavComponent } from './../../components/home/nav/nav.component';
 import { FighterDetailComponent } from './fighter-detail/fighter-detail.component';
 
+import { FileUploadModule } from 'ng2-file-upload';
+
 
 
 @NgModule({
@@ -40,7 +42,8 @@ import { FighterDetailComponent } from './fighter-detail/fighter-detail.componen
     ReactiveFormsModule,
     FormsModule,
     PipeModule,
-    UiModule
+    UiModule,
+    FileUploadModule
     
   ],
   providers: [
@@ -66,8 +69,7 @@ import { FighterDetailComponent } from './fighter-detail/fighter-detail.componen
     TotalComponent,
     BohurtComponent,
     LeaderboardComponent,
-    NavComponent,
-    FighterDetailComponent
+    NavComponent
   ],
   entryComponents: [ 
     UpdateSwordShieldComponent,
@@ -96,8 +98,7 @@ import { FighterDetailComponent } from './fighter-detail/fighter-detail.componen
     TotalComponent,
     BohurtComponent,
     LeaderboardComponent,
-    NavComponent,
-    FighterDetailComponent
+    NavComponent
   ],
 })
 export class RankingModule {}

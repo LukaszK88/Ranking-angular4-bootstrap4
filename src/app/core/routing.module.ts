@@ -32,4 +32,4 @@ const appRoutes: Routes = [
 })
 export class RoutingModule {}
 
-export const routingComponents = [HomeComponent, RankingComponent];   
+export const routingComponents = [HomeComponent, RankingComponent,FighterDetailComponent];   

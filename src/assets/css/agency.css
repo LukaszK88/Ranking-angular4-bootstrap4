@@ -534,6 +534,10 @@ ul.social-buttons {
     ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li a:active {
       background-color: #000000; }
 
+.my-drop-zone {
+  border: dotted 3px lightgray;
+  width: 100%; }
+
 .text-primary {
   color: #000000 !important; }
 

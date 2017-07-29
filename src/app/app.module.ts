@@ -26,6 +26,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 
 import {ResourceModule} from 'ngx-resource';
+import { ImageUploadModule } from "angular2-image-upload";
+
 
 let providers = {
     "google": {
@@ -56,7 +58,8 @@ let providers = {
     RankingModule,
     ToastrModule.forRoot(),
     Angular2SocialLoginModule,
-    ResourceModule.forRoot()
+    ResourceModule.forRoot(),
+    ImageUploadModule.forRoot()
   ],
   providers: [
     Api,
@@ -68,7 +71,7 @@ let providers = {
   ],
   entryComponents: [ 
     SignupComponent,
-    LoginComponent,
+    LoginComponent
   ],
   bootstrap: [AppComponent]
 })

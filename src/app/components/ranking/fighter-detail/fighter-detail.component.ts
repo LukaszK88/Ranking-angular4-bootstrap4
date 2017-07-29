@@ -6,9 +6,9 @@ import { EventService } from '../../../services/event.service';
 import { ActivatedRoute } from '@angular/router';
 import { AchievementResource } from '../../../resources/achievement.resource';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
-import { categories } from '../../../core/config.module';
+import { categories, apiBase } from '../../../core/config.module';
 import { ToastrService } from 'ngx-toastr';
-
+import { FileHolder } from 'angular2-image-upload/lib/image-upload/image-upload.component';
 
 
 
@@ -19,12 +19,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FighterDetailComponent implements OnInit {
 
+
   addAchievementForm:FormGroup;
   editAchievementForm:FormGroup;
 
   currentUser:any;
   fighter:any;
   achievement:any;
+  achievementCountries:any;
   achievements:any = [];
   events:any;
   activeUser:boolean;
@@ -36,6 +38,9 @@ export class FighterDetailComponent implements OnInit {
     {name:'2nd'},
     {name:'3rd'}
   ];
+
+  photoUploadUrl:string = apiBase + 'storePhoto/116'
+
 
   constructor(
     protected guard:GuardService,
@@ -57,6 +62,7 @@ export class FighterDetailComponent implements OnInit {
     "category":["",Validators.required]
     });
   }
+  
 
   ngOnInit() {
       this.getTournaments();
@@ -67,6 +73,15 @@ export class FighterDetailComponent implements OnInit {
     }
   }
 
+  onUploadFinished(photo:any){
+    let temp;
+    temp = JSON.parse(photo.serverResponse._body);
+    this.fighter.image = temp.imageUrl;
+  }
+
+  deletePhoto(){
+    this.fighter.image = null;
+  }
   checkIfCurrentIsLoggedIn(){
     if(this.guard.loggedIn()){
       this.guard.getCurrentUser().subscribe(
@@ -103,7 +118,9 @@ export class FighterDetailComponent implements OnInit {
 
   getFighterAchievements(){
     this.achievementResource.get({id:this.route.snapshot.params['id']}).$observable.subscribe(
-      (data:any) => {this.achievements = data.data.data}
+      (data:any) => {this.achievements = data.data.data;
+                     this.achievementCountries = data.data.achievement;
+      }
       )
   }
 
