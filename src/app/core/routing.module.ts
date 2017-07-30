@@ -4,12 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './../components/home/home.component';
 import { RankingComponent } from './../components/ranking/ranking.component';
 import { FighterDetailComponent } from './../components/ranking/fighter-detail/fighter-detail.component';
+import { AdminPanelComponent } from './../components/admin/admin-panel/admin-panel.component';
 
 
 const appRoutes: Routes = [
   { path:'', component:HomeComponent},
   { path:'ranking', component:RankingComponent},
   { path:'fighter/:id', component:FighterDetailComponent},
+  { path:'admin', component:AdminPanelComponent},
 ]
 
 @NgModule({
@@ -32,4 +34,4 @@ const appRoutes: Routes = [
 })
 export class RoutingModule {}
 
-export const routingComponents = [HomeComponent, RankingComponent,FighterDetailComponent];   
+export const routingComponents = [HomeComponent, RankingComponent,FighterDetailComponent,AdminPanelComponent];   

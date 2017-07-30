@@ -632,3 +632,6 @@ ul.social-buttons {
 
 .fighter-detail-list.mat-list .mat-list-item .mat-list-item-content {
   height: 28px; }
+
+.mat-card .card-full-width {
+  width: 100% !important; }

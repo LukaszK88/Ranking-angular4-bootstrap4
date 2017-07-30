@@ -16,6 +16,7 @@ import { FighterService } from './services/fighter.service';
 import { RankingService } from './services/ranking.service';
 import { EventService } from './services/event.service';
 import { GuardService } from './services/guard.service';
+import { AdminService } from './services/admin.service';
 //main components
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
@@ -27,6 +28,8 @@ import { Angular2SocialLoginModule } from "angular2-social-login";
 
 import {ResourceModule} from 'ngx-resource';
 import { ImageUploadModule } from "angular2-image-upload";
+import { EditProfileComponent } from './components/user/edit-profile/edit-profile.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
 let providers = {
@@ -44,7 +47,9 @@ let providers = {
     AppComponent,
     SignupComponent,
     LoginComponent,
-    routingComponents
+    routingComponents,
+    EditProfileComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,9 @@ let providers = {
     ToastrModule.forRoot(),
     Angular2SocialLoginModule,
     ResourceModule.forRoot(),
-    ImageUploadModule.forRoot()
+    ImageUploadModule.forRoot(),
+    NgbModule.forRoot()
+
   ],
   providers: [
     Api,
@@ -67,11 +74,13 @@ let providers = {
     RankingService,
     UserService,
     GuardService,
-    EventService
+    EventService,
+    AdminService
   ],
   entryComponents: [ 
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    EditProfileComponent
   ],
   bootstrap: [AppComponent]
 })

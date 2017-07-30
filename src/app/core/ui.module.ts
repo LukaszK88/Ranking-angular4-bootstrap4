@@ -9,8 +9,7 @@ import {MdSelectModule} from '@angular/material';
 import {MdSliderModule} from '@angular/material';
 import {MdCardModule} from '@angular/material';
 import {MdListModule} from '@angular/material';
-
-
+import {MdDatepickerModule,MdNativeDateModule} from '@angular/material';
 
 @NgModule({
   imports: [ 
@@ -25,6 +24,8 @@ import {MdListModule} from '@angular/material';
     MdSliderModule,
     MdCardModule,
     MdListModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
   providers: [
 
@@ -45,6 +46,8 @@ import {MdListModule} from '@angular/material';
     MdSliderModule,
     MdCardModule,
     MdListModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
 })
 export class UiModule {}

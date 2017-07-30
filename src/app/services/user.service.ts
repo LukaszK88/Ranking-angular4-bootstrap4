@@ -43,6 +43,12 @@ export class UserService {
    .catch(this.api.serverError);
   }
 
+  updateUser(data){
+   return this.api.put('user/update?token='+localStorage.getItem('currentUser'),data)
+   .map(response => response.json())
+   .catch(this.api.serverError);
+  }
+
   logout(){
     localStorage.removeItem('currentUser');
     location.reload();

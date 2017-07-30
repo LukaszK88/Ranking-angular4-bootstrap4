@@ -1,0 +1,43 @@
+<form [formGroup]="editProfileForm" (ngSubmit)="updateProfile(editProfileForm.value)">
+  <h2 md-dialog-title>Edit Profile</h2>
+  <md-dialog-content>
+    <md-input-container>
+      <input mdInput type="text" placeholder="Name" formControlName="name" [(ngModel)]="currentUser.name" name="currentUser.name">
+    </md-input-container>
+        <div class="validation-alert" *ngIf="!editProfileForm.controls['name'].valid && editProfileForm.controls['name'].touched">Required && must be valid email </div>
+  <br>
+  Weight
+  <md-slider
+        formControlName="weight"
+        [max]="130"
+        [min]="40"
+        [step]="1"
+        [thumb-label]="true"
+        [(ngModel)]="currentUser.weight" 
+        name="currentUser.weight"
+        >
+    </md-slider>
+    <br>
+    <md-input-container>
+    <input mdInput 
+    [mdDatepicker]="picker" 
+    placeholder="DOB"
+    formControlName="age" [(ngModel)]="currentUser.age" name="currentUser.age"
+    >
+      <button mdSuffix [mdDatepickerToggle]="picker"></button>
+    </md-input-container>
+    <md-datepicker #picker startView="year" [startAt]="startDate"></md-datepicker>
+    <br>
+    <md-input-container>
+      <input mdInput type="text" placeholder="Your favourite quote" formControlName="quote" [(ngModel)]="currentUser.quote" name="currentUser.quote">
+    </md-input-container>
+     <br>
+    <md-input-container>
+      <textarea mdInput type="text" rows="5" placeholder="About you" formControlName="about" [(ngModel)]="currentUser.about" name="currentUser.about">
+      </textarea>
+    </md-input-container>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <button md-button type="text" [disabled]="!editProfileForm.valid">Update</button>
+  </md-dialog-actions>
+    </form>

@@ -2,13 +2,15 @@ import { Component, Input, OnInit } from '@angular/core';
 import {MdDialog} from '@angular/material';
 import {SignupComponent} from '../../auth/signup/signup.component';
 import {LoginComponent} from '../../auth/login/login.component';
+import { EditProfileComponent } from '../../user/edit-profile/edit-profile.component';
+import {GuardService} from '../../../services/guard.service';
+
 import {UserService} from '../../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-nav',
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  templateUrl: './nav.component.html'
 })
 export class NavComponent implements OnInit {
 
@@ -28,6 +30,8 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
   logout(){
     this.toast.info('Redirecting...','You are being logged out');
@@ -52,6 +56,21 @@ export class NavComponent implements OnInit {
     if(!this.openedDialog){
       
      this.dialogRef = this.dialog.open(SignupComponent);
+        this.openedDialog = true;
+    }
+
+    this.dialogRef.afterClosed().subscribe(result => {
+      this.openedDialog = false;
+    })
+    
+  }
+
+  openEditProfile(key) {
+    if(!this.openedDialog){
+      
+     this.dialogRef = this.dialog.open(EditProfileComponent,{
+       data: this.currentUser
+     });
         this.openedDialog = true;
     }
 

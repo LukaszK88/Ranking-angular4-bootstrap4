@@ -13,8 +13,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#portfolio">Portfolio</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" *ngIf="currentUser">{{ currentUser.username }}</a>
+                    <li *ngIf="currentUser" class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ currentUser.username }}</a>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" [routerLink]="['/fighter', currentUser.id]">Your Profile</a>
+                        <a class="dropdown-item" (click)="openEditProfile(key)">Edit Profile</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" *ngIf="currentUser.admin" routerLink="/admin">Admin Panel</a>
+                        </div>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" *ngIf="currentUser" (click)="logout()">Log out</a>
