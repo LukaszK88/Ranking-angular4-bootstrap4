@@ -17,6 +17,11 @@ import { RankingService } from './services/ranking.service';
 import { EventService } from './services/event.service';
 import { GuardService } from './services/guard.service';
 import { AdminService } from './services/admin.service';
+import { PostService } from './services/post.service';
+
+//Resources
+import { PostResource } from './resources/post.resource';
+
 //main components
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
@@ -30,6 +35,10 @@ import {ResourceModule} from 'ngx-resource';
 import { ImageUploadModule } from "angular2-image-upload";
 import { EditProfileComponent } from './components/user/edit-profile/edit-profile.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NewsComponent } from './components/blog/news/news.component';
+
+import 'mousetrap';
+import {ModalGalleryModule} from 'angular-modal-gallery';
 
 
 let providers = {
@@ -49,7 +58,7 @@ let providers = {
     LoginComponent,
     routingComponents,
     EditProfileComponent,
-    
+    NewsComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +74,8 @@ let providers = {
     Angular2SocialLoginModule,
     ResourceModule.forRoot(),
     ImageUploadModule.forRoot(),
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ModalGalleryModule.forRoot()
 
   ],
   providers: [
@@ -75,7 +85,9 @@ let providers = {
     UserService,
     GuardService,
     EventService,
-    AdminService
+    AdminService,
+    PostService,
+    PostResource
   ],
   entryComponents: [ 
     SignupComponent,

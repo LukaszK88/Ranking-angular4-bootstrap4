@@ -635,3 +635,7 @@ ul.social-buttons {
 
 .mat-card .card-full-width {
   width: 100% !important; }
+
+.fat-title {
+  font-weight: 700 !important;
+  font-size: 22px !important; }

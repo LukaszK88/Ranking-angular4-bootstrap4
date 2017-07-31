@@ -5,6 +5,6 @@ import { RequestMethod } from '@angular/http';
 
 @Injectable()
 @ResourceParams({
-  url: apiBase + 'achievement'
+  url: apiBase + 'post'
 })
-export class AchievementResource extends ResourceCRUD<any, any, any> {}
+export class PostResource extends ResourceCRUD<any, any, any>  {}
