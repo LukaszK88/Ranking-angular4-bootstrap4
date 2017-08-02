@@ -9,6 +9,7 @@ import { RoutingModule, routingComponents } from './core/routing.module';
 import { PipeModule } from './core/pipe.module';
 import { UiModule } from './core/ui.module';
 import { RankingModule } from './components/ranking/ranking.module';
+import { EditorModule } from './components/editor/editor.module';
 //services
 import { Api } from './services/api';
 import { UserService } from './services/user.service';
@@ -35,10 +36,10 @@ import {ResourceModule} from 'ngx-resource';
 import { ImageUploadModule } from "angular2-image-upload";
 import { EditProfileComponent } from './components/user/edit-profile/edit-profile.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { NewsComponent } from './components/blog/news/news.component';
 
 import 'mousetrap';
 import {ModalGalleryModule} from 'angular-modal-gallery';
+import { EditorComponent } from './components/editor/editor.component';
 
 
 let providers = {
@@ -58,7 +59,7 @@ let providers = {
     LoginComponent,
     routingComponents,
     EditProfileComponent,
-    NewsComponent,
+    EditorComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +76,8 @@ let providers = {
     ResourceModule.forRoot(),
     ImageUploadModule.forRoot(),
     NgbModule.forRoot(),
-    ModalGalleryModule.forRoot()
+    ModalGalleryModule.forRoot(),
+    EditorModule
 
   ],
   providers: [

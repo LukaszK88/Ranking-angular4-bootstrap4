@@ -2,7 +2,7 @@
      
 <div *ngIf="post" class="container-fluid bg-wallpaper">
     <div class="row">
-        <md-card class="example-card">
+        <md-card style="margin-left: 15px;">
             <md-card-header>
                 <div md-card-avatar class="example-header-image"></div>
                 <md-card-title class="fat-title">
@@ -10,22 +10,27 @@
                 </md-card-title>
             </md-card-header>
             <md-card-content>
-                <p>
+                <div class="row">
+                    <p>
                 The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
                 A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
                 bred for hunting.
                 </p>
-             <modal-gallery [modalImages]="images"
-                 [downloadable]="false"
-                 [slideConfig]="{infinite: false}"
-                 (hasData)="onImageLoaded($event)"
-                 >
-                </modal-gallery> 
-            </md-card-content>
-
+                </div>
+                <div class="row">
+                    <div class="col-md-4 offset-md-5">
+                        <modal-gallery [modalImages]="images"
+                        [downloadable]="false"
+                        [slideConfig]="{infinite: false}"
+                        (hasData)="onImageLoaded($event)"
+                        >
+                        </modal-gallery> 
+                    </div>
+                </div>
+                </md-card-content>
             <md-card-actions>
-                
                 <button md-button>SHARE</button>
+                <button class="pull-right" *ngIf="post.image.length > 5 " md-button>Show Gallery</button>
             </md-card-actions>
         </md-card>
     </div>

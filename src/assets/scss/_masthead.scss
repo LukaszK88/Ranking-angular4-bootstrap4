@@ -3,11 +3,13 @@ header.masthead {
     margin-top: 100px;
     text-align: center;
     color: white;
-    background-image: url('../img/main.jpg');
+    height: 500px;
+    background-image: url('../img/newBack.png');
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    //background-attachment: scroll;
+    background-size: 100%;
     background-position: center center;
-    @include background-cover;
+   // @include background-cover;
     .intro-text {
         padding-top: 100px;
         padding-bottom: 50px;

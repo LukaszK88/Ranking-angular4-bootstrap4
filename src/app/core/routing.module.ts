@@ -7,6 +7,7 @@ import { FighterDetailComponent } from './../components/ranking/fighter-detail/f
 import { AdminPanelComponent } from './../components/admin/admin-panel/admin-panel.component';
 import { PostsComponent } from './../components/blog/posts/posts.component';
 import { PostDetailComponent } from './../components/blog/post-detail/post-detail.component';
+import { EditorComponent } from './../components/editor/editor.component';
 
 
 
@@ -17,6 +18,7 @@ const appRoutes: Routes = [
   { path:'admin', component:AdminPanelComponent},
   { path:'posts/:type', component:PostsComponent},
   { path:'post/:id', component:PostDetailComponent},
+  { path:'editor', component:EditorComponent},
 ]
 
 @NgModule({
@@ -45,5 +47,6 @@ export const routingComponents = [
   FighterDetailComponent,
   AdminPanelComponent,
   PostsComponent,
-  PostDetailComponent
+  PostDetailComponent,
+  EditorComponent
 ];   

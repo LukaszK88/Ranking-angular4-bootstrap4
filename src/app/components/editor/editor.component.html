@@ -1,0 +1,15 @@
+<app-nav [currentUser]='currentUser'></app-nav>
+     
+<div class="container-fluid bg-wallpaper">
+  <div class="row">
+    <md-card style="width: 100%">
+       <ngb-tabset>
+  <ngb-tab title="Add Posts">
+    <ng-template ngbTabContent>
+        <posts-editor></posts-editor>
+    </ng-template>
+  </ngb-tab>
+       </ngb-tabset>
+    </md-card>
+  </div>
+</div>

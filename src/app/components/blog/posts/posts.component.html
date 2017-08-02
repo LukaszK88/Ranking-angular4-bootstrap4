@@ -2,7 +2,7 @@
      
 <div class="container-fluid bg-wallpaper">
 <div class="row">
-  <div class=" col-md-12">
+  <div class="col-md-12 hidden-sm-down">
     <i *ngIf="!changeGrid" class="fa fa-th fa-2x pull-right" (click)="changeGrid=!changeGrid" aria-hidden="true"></i>
     <i *ngIf="changeGrid" class="fa fa-list fa-2x pull-right" (click)="changeGrid=!changeGrid" aria-hidden="true"></i>
   </div>
@@ -20,7 +20,7 @@
             </p>
           </div>
           <div class="col-md-3">
-            img
+             <img class="img-thumbnail" src="{{ post.url }}">
           </div>
           </div>
         </md-card-content>
@@ -32,19 +32,18 @@
   </div>
     <div *ngIf="changeGrid" class="row">
       <div class="col-md-4" *ngFor="let post of posts">
-    <md-card style="margin:0px 20px 5px 20px; width:100%" >
+    <md-card style="margin:0px 20px 5px 20px; width:100%; height:250px" >
         <md-card-header>
           <md-card-title>Posted by: {{ post.user.name }} on {{ post.created_at | limitTo: 10}} </md-card-title>
           <md-card-subtitle>{{ post.title }}</md-card-subtitle>
         </md-card-header>
-        <img md-card-image src="assets/img/examples/shiba2.jpg">
+        
         <md-card-content>
-          <!-- <div class="row">
-          <div class="col-md-9">
-            <p [innerHTML]="post.body">
-            </p>
-          </div>
-          </div> -->
+          <div class="row">
+            <div  class="col-md-12">
+             <img style="max-height: 100px" src="{{ post.url }}">
+            </div>
+          </div> 
         </md-card-content>
         <md-card-actions>
           <button md-button>LIKE</button>

@@ -14,9 +14,11 @@ export class PostDetailComponent implements OnInit {
 
   currentUser:any;
   post:any;
-  images:any = [
-    new Image('http://placekitten.com/200/301')
-  ]
+  images:any = [];
+
+    
+    //new Image('http://placekitten.com/200/301')
+  
 
   openModalWindow: boolean = false;
   imagePointer: number = 0;
@@ -43,7 +45,9 @@ export class PostDetailComponent implements OnInit {
    }
 
   ngOnInit() {
-
+    if(this.post){
+    
+    }
   }
 
   onImageLoaded(event: any) {
@@ -57,6 +61,14 @@ export class PostDetailComponent implements OnInit {
     .$observable
     .subscribe(
       (data) => { this.post = data;
+        let i:number = 0;
+        for(let image of this.post.image){
+          this.images.push(new Image(image.url))
+          i++
+          if(i == 5){
+            break
+          }
+        }
                   
       }
     )
