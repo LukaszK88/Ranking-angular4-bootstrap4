@@ -33,7 +33,9 @@ export class UpdateLongswordComponent implements OnInit {
   }
 
   update(record){
-    this.updateService.update(record,this.data);
+    console.log(record);
+    this.updateService.update(record,this.data)
+    .subscribe((data) => {console.log(data)});
   }
 
 }

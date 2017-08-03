@@ -40,8 +40,10 @@ export class UpdateService {
   update(record,data){
    
     record.user_id = data.fighter.id;
-    this.api.post('fighters/'+data.category,record).map(response => response.json())
-     .catch(this.api.serverError);
-    this.dialog.closeAll();
+    this.dialog.closeAll()
+    return this.api.post('fighters/'+data.category,record)
+    .map(response => response.json())
+    .catch(this.api.serverError)
+    
   }
 }

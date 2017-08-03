@@ -15,8 +15,9 @@
       <!-- <button md-button (click)='signUp()'>No</button>   -->
     <!-- Can optionally provide a result for the closing dialog. -->
     <button md-button type="submit" [disabled]="!loginForm.valid">Log in</button>
+    <button md-button (click)="fbLogin('facebook')">Facebook</button>
+    <button md-button (click)="gLogin('google')">Google</button> 
   </md-dialog-actions>
     </form>
-<hr>
-    <button md-button (click)="fbLogin('facebook')">Facebook</button>
-   <button md-button (click)="gLogin('google')">Google</button> 
+
+    
